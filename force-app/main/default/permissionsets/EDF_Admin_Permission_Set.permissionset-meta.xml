@@ -95,6 +95,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Form_Element__c.Column_Type__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Form_Element__c.Column__c</field>
         <readable>true</readable>
     </fieldPermissions>

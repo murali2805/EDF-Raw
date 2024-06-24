@@ -55,98 +55,98 @@
 
                                 <!-- =============================================== S E C T I O N     D I V    S T A R T =============================================== -->
                                 
-                                <div key={section.Id} class="slds-p-around_medium" data-edfcontainer={section.Name} data-toggle={section.edf__Container_Key__c}> <!-- CONTAINER HTML START -->
+                                <div key={section.Id} class="slds-p-around_medium" data-edfcontainer={section.Name} data-toggle={section.Container_Key__c}> <!-- CONTAINER HTML START -->
 
                                     <!--
-                                    <p>Title: {section.edf__Title__c}</p>
-                                    <p>Container Sequence:{section.edf__Container_Sequence__c}</p>
+                                    <p>Title: {section.Title__c}</p>
+                                    <p>Container Sequence:{section.Container_Sequence__c}</p>
                                     -->
 
-                                    <template if:true={section.edf__Decision_Expression__c}>
+                                    <template if:true={section.Decision_Expression__c}>
                                         <input 
-                                            data-gearid={section.edf__Container_Key__c}
-                                            data-fieldapi={section.edf__Container_Key__c}
-                                            data-expression={section.edf__Decision_Expression__c}
+                                            data-gearid={section.Container_Key__c}
+                                            data-fieldapi={section.Container_Key__c}
+                                            data-expression={section.Decision_Expression__c}
                                             class="decisiongear" 
                                             type="hidden"
                                         />
 
                                         <input 
-                                            data-gearresultid={section.edf__Container_Key__c}
+                                            data-gearresultid={section.Container_Key__c}
                                             value=""
                                             class="decisiongearresult" 
                                             type="hidden"
                                         />
                                     </template>
                                     
-                                    <template if:false={section.edf__Related_List_Container__c}> <!-- NOT A RELATED LIST CONDITION START-->
+                                    <template if:false={section.Related_List_Container__c}> <!-- NOT A RELATED LIST CONDITION START-->
                                         <div class="slds-grid slds-wrap slds-gutters"> <!-- COLUMN WRAPPER HTML START -->
                                             <template for:each={section.columns} for:item="column">
                                                 <div key={column.columnkey} class={section.colsclass}> <!-- COLUMN HTML START -->
                                                     <template if:true={column.records}>
                                                         <template for:each={column.records} for:item="form_element">
-                                                            <div key={form_element.Id} data-edfelement={form_element.Name} data-toggle={form_element.edf__Form_Element_Key__c}> <!-- FORM ELEMENT HTML START -->
+                                                            <div key={form_element.Id} data-edfelement={form_element.Name} data-toggle={form_element.Form_Element_Key__c}> <!-- FORM ELEMENT HTML START -->
 
-                                                            <template if:false={form_element.edf__Read_Only__c}>
-                                                                <template if:false={form_element.edf__HTML_Snippet__c}>
+                                                            <template if:false={form_element.Read_Only__c}>
+                                                                <template if:false={form_element.HTML_Snippet__c}>
                                                                     <template if:true={form_element.hascustomlabel}>   
-                                                                        <template if:false={form_element.edf__Hidden__c}>
+                                                                        <template if:false={form_element.Hidden__c}>
                                                                             <div class="slds-form-element" style="padding: 5px 0px 5px 3px">
-                                                                                <template if:true={form_element.edf__Field_API_Name__c}>
-                                                                                    <label class="slds-form-element__label slds-no-flex" for={form_element.edf__Field_API_Lower_Case__c}>
-                                                                                        <template if:true={form_element.edf__Required__c}>
+                                                                                <template if:true={form_element.Field_API_Name__c}>
+                                                                                    <label class="slds-form-element__label slds-no-flex" for={form_element.Field_API_Lower_Case__c}>
+                                                                                        <template if:true={form_element.Required__c}>
                                                                                             <abbr class="slds-required" title="required">* </abbr>
                                                                                         </template>
-                                                                                        {form_element.edf__Custom_Label__c}
+                                                                                        {form_element.Custom_Label__c}
                                                                                     </label>
                                                                                 </template>
                                                                                 
                                                                                 <lightning-input-field  
-                                                                                    required={form_element.edf__Required__c} 
-                                                                                    data-actualrequired={form_element.edf__Required__c}
-                                                                                    data-fieldkey={form_element.edf__Form_Element_Key__c}
+                                                                                    required={form_element.Required__c} 
+                                                                                    data-actualrequired={form_element.Required__c}
+                                                                                    data-fieldkey={form_element.Form_Element_Key__c}
                                                                                     variant="label-hidden"
-                                                                                    id={form_element.edf__Field_API_Lower_Case__c} 
+                                                                                    id={form_element.Field_API_Lower_Case__c} 
                                                                                     onchange={handleInputFieldChange}
-                                                                                    data-key={form_element.edf__Field_API_Lower_Case__c} 
-                                                                                    field-name={form_element.edf__Field_API_Name__c}> 
+                                                                                    data-key={form_element.Field_API_Lower_Case__c} 
+                                                                                    field-name={form_element.Field_API_Name__c}> 
                                                                                 </lightning-input-field>
                                                                             </div>
                                                                         </template>
                                                                     </template> 
 
                                                                     <template if:false={form_element.hascustomlabel}>
-                                                                        <template if:false={form_element.edf__Hidden__c}>
+                                                                        <template if:false={form_element.Hidden__c}>
                                                                             <lightning-input-field 
-                                                                                required={form_element.edf__Required__c} 
-                                                                                data-actualrequired={form_element.edf__Required__c}
-                                                                                data-fieldkey={form_element.edf__Form_Element_Key__c}
+                                                                                required={form_element.Required__c} 
+                                                                                data-actualrequired={form_element.Required__c}
+                                                                                data-fieldkey={form_element.Form_Element_Key__c}
                                                                                 onchange={handleInputFieldChange}
-                                                                                data-key={form_element.edf__Field_API_Lower_Case__c} 
-                                                                                field-name={form_element.edf__Field_API_Name__c}> 
+                                                                                data-key={form_element.Field_API_Lower_Case__c} 
+                                                                                field-name={form_element.Field_API_Name__c}> 
                                                                             </lightning-input-field>
                                                                         </template>
                                                                     </template>
                                                                 </template>
                                                             </template>
 
-                                                            <template if:true={form_element.edf__HTML_Snippet__c}>
-                                                                <lightning-formatted-rich-text value={form_element.edf__HTML_Snippet_Code__c}></lightning-formatted-rich-text>
+                                                            <template if:true={form_element.HTML_Snippet__c}>
+                                                                <lightning-formatted-rich-text value={form_element.HTML_Snippet_Code__c}></lightning-formatted-rich-text>
                                                             </template>
                                                             
                                                             <input 
-                                                                data-searchkey={form_element.edf__Record_Gear_Key_Mapping__c}
-                                                                data-recgearkeymapping={form_element.edf__Field_API_Lower_Case__c}
+                                                                data-searchkey={form_element.Record_Gear_Key_Mapping__c}
+                                                                data-recgearkeymapping={form_element.Field_API_Lower_Case__c}
                                                                 class="gearmapping" 
                                                                 type="hidden"
                                                             />
                                                             
 
-                                                            <template if:true={form_element.edf__Decision_Expression__c}>
+                                                            <template if:true={form_element.Decision_Expression__c}>
                                                                 <input 
-                                                                    data-gearid={form_element.edf__Form_Element_Key__c}
-                                                                    data-fieldapi={form_element.edf__Field_API_Name__c}
-                                                                    data-expression={form_element.edf__Decision_Expression__c}
+                                                                    data-gearid={form_element.Form_Element_Key__c}
+                                                                    data-fieldapi={form_element.Field_API_Name__c}
+                                                                    data-expression={form_element.Decision_Expression__c}
                                                                     class="decisiongear" 
                                                                     type="hidden"
                                                                 />
@@ -161,16 +161,16 @@
 
                                     </template> <!-- NOT A RELATED LIST CONDITION END-->
 
-                                    <template if:true={section.edf__Related_List_Container__c}> <!-- IS A RELATED LIST CONDITION START-->
+                                    <template if:true={section.Related_List_Container__c}> <!-- IS A RELATED LIST CONDITION START-->
                                         <!-- <div class="slds-grid slds-wrap slds-gutters"> RL COLUMN WRAPPER HTML START -->
                                             <c-related-list 
-                                                sobject-api-name={section.edf__Object_API_Name__c}
-                                                related-field-api-name={section.edf__Related_Field_API_Name__c}
+                                                sobject-api-name={section.Object_API_Name__c}
+                                                related-field-api-name={section.Related_Field_API_Name__c}
                                                 sorted-by="Name"
                                                 fields={section.fields}
                                                 columns={section.columns}
                                                 invoked-from-experience={invokedfromexperience}
-                                                related-list-filter={section.edf__Filter_Condition__c}
+                                                related-list-filter={section.Filter_Condition__c}
                                                 record-id={recordId}
                                                 >
                                             </c-related-list>
@@ -206,48 +206,48 @@
 
                                 <!-- =============================================== S E C T I O N     D I V    S T A R T =============================================== -->
                                 
-                                <div key={section.Id} class="slds-p-around_medium"  data-edfcontainer={section.Name} data-toggle={section.edf__Container_Key__c}> <!-- CONTAINER HTML START -->
+                                <div key={section.Id} class="slds-p-around_medium"  data-edfcontainer={section.Name} data-toggle={section.Container_Key__c}> <!-- CONTAINER HTML START -->
 
                                     
                                     <!--
-                                    <p>Title: {section.edf__Title__c}</p>
-                                    <p>Container Sequence:{section.edf__Container_Sequence__c}</p>
+                                    <p>Title: {section.Title__c}</p>
+                                    <p>Container Sequence:{section.Container_Sequence__c}</p>
                                     -->
 
-                                    <template if:true={section.edf__Decision_Expression__c}>
+                                    <template if:true={section.Decision_Expression__c}>
                                         <input 
-                                            data-gearid={section.edf__Container_Key__c}
-                                            data-fieldapi={section.edf__Container_Key__c}
-                                            data-expression={section.edf__Decision_Expression__c}
+                                            data-gearid={section.Container_Key__c}
+                                            data-fieldapi={section.Container_Key__c}
+                                            data-expression={section.Decision_Expression__c}
                                             class="decisiongear" 
                                             type="hidden"
                                         />
 
                                         <input 
-                                            data-gearresultid={section.edf__Container_Key__c}
+                                            data-gearresultid={section.Container_Key__c}
                                             value=""
                                             class="decisiongearresult" 
                                             type="hidden"
                                         />
                                     </template>
 
-                                    <template if:false={section.edf__Related_List_Container__c}> <!-- NOT A RELATED LIST CONDITION START-->
+                                    <template if:false={section.Related_List_Container__c}> <!-- NOT A RELATED LIST CONDITION START-->
 
                                         <div class="slds-grid slds-wrap slds-gutters"> <!-- COLUMN WRAPPER HTML START -->
                                             <template for:each={section.columns} for:item="column">
                                                 <div key={column.columnkey} class={section.colsclass}> <!-- COLUMN HTML START -->
                                                     <template if:true={column.records}>
                                                         <template for:each={column.records} for:item="form_element">
-                                                            <div key={form_element.Id} data-edfelement={form_element.Name} data-toggle={form_element.edf__Form_Element_Key__c}> <!-- FORM ELEMENT HTML START -->
+                                                            <div key={form_element.Id} data-edfelement={form_element.Name} data-toggle={form_element.Form_Element_Key__c}> <!-- FORM ELEMENT HTML START -->
 
-                                                                <template if:false={form_element.edf__HTML_Snippet__c}>
+                                                                <template if:false={form_element.HTML_Snippet__c}>
                                                                     <template if:true={form_element.hascustomlabel}>   
-                                                                        <template if:false={form_element.edf__Hidden__c}>
+                                                                        <template if:false={form_element.Hidden__c}>
                                                                             <div class="slds-form-element_readonly" style="padding: 5px 0px 5px 3px">
                                                                                 <!-- After Inline Edit [-->
-                                                                                <template if:true={form_element.edf__Field_API_Name__c}>
-                                                                                    <label class="slds-form-element__label slds-no-flex" for={form_element.edf__Field_API_Lower_Case__c}>
-                                                                                        <span class="slds-form__item">{form_element.edf__Custom_Label__c}</span>
+                                                                                <template if:true={form_element.Field_API_Name__c}>
+                                                                                    <label class="slds-form-element__label slds-no-flex" for={form_element.Field_API_Lower_Case__c}>
+                                                                                        <span class="slds-form__item">{form_element.Custom_Label__c}</span>
                                                                                     </label>
                                                                                 </template>
                                                                                 <template if:false={readOnlyForm}>
@@ -260,28 +260,28 @@
                                                                                 </template>
                                                                                 <lightning-output-field  class="slds-form-element_readonly"  
                                                                                     variant="label-hidden"
-                                                                                    id={form_element.edf__Field_API_Lower_Case__c} 
+                                                                                    id={form_element.Field_API_Lower_Case__c} 
                                                                                     onchange={handleInputFieldChange}
-                                                                                    data-key={form_element.edf__Field_API_Lower_Case__c} 
-                                                                                    field-name={form_element.edf__Field_API_Name__c}> 
+                                                                                    data-key={form_element.Field_API_Lower_Case__c} 
+                                                                                    field-name={form_element.Field_API_Name__c}> 
                                                                                 </lightning-output-field>
 
                                                                                 
                                                                                 <!-- After Inline Edit ]-->
 
                                                                                 <!-- Before inline edit
-                                                                                <template if:true={form_element.edf__Field_API_Name__c}>
-                                                                                    <label class="slds-form-element__label slds-no-flex" for={form_element.edf__Field_API_Lower_Case__c}>
-                                                                                        <span class="slds-form__item">{form_element.edf__Custom_Label__c}</span>
+                                                                                <template if:true={form_element.Field_API_Name__c}>
+                                                                                    <label class="slds-form-element__label slds-no-flex" for={form_element.Field_API_Lower_Case__c}>
+                                                                                        <span class="slds-form__item">{form_element.Custom_Label__c}</span>
                                                                                     </label>
                                                                                 </template>
                                                                                 
                                                                                 <lightning-output-field  class="slds-form-element_readonly"  
                                                                                     variant="label-hidden"
-                                                                                    id={form_element.edf__Field_API_Lower_Case__c} 
+                                                                                    id={form_element.Field_API_Lower_Case__c} 
                                                                                     onchange={handleInputFieldChange}
-                                                                                    data-key={form_element.edf__Field_API_Lower_Case__c} 
-                                                                                    field-name={form_element.edf__Field_API_Name__c}> 
+                                                                                    data-key={form_element.Field_API_Lower_Case__c} 
+                                                                                    field-name={form_element.Field_API_Name__c}> 
                                                                                 </lightning-output-field>
                                                                                 -->
                                                                             </div>
@@ -289,13 +289,13 @@
                                                                     </template> 
             
                                                                     <template if:false={form_element.hascustomlabel}>
-                                                                        <template if:false={form_element.edf__Hidden__c}>
+                                                                        <template if:false={form_element.Hidden__c}>
                                                                             <div class="slds-form__item">
                                                                                 <!-- After Inline Edit [-->
                                                                                 <lightning-output-field  class="slds-form-element_readonly"  
                                                                                     onchange={handleInputFieldChange}
-                                                                                    data-key={form_element.edf__Field_API_Lower_Case__c} 
-                                                                                    field-name={form_element.edf__Field_API_Name__c}> 
+                                                                                    data-key={form_element.Field_API_Lower_Case__c} 
+                                                                                    field-name={form_element.Field_API_Name__c}> 
                                                                                 </lightning-output-field>
                                                                                 <template if:false={readOnlyForm}>
                                                                                     <button onclick={handleEdit} style="margin-left:-15px;margin-top:10px" class="slds-button slds-button_icon">
@@ -310,8 +310,8 @@
                                                                                 <!-- Before Inline Edit
                                                                                     <lightning-output-field  class="slds-form-element_readonly"  
                                                                                     onchange={handleInputFieldChange}
-                                                                                    data-key={form_element.edf__Field_API_Lower_Case__c} 
-                                                                                    field-name={form_element.edf__Field_API_Name__c}> 
+                                                                                    data-key={form_element.Field_API_Lower_Case__c} 
+                                                                                    field-name={form_element.Field_API_Name__c}> 
                                                                                 </lightning-output-field>
                                                                                 -->
                                                                             </div>
@@ -319,32 +319,32 @@
                                                                     </template>
                                                                 </template>
 
-                                                                <template if:true={form_element.edf__HTML_Snippet__c}>
-                                                                    <lightning-formatted-rich-text value={form_element.edf__HTML_Snippet_Code__c}></lightning-formatted-rich-text>
+                                                                <template if:true={form_element.HTML_Snippet__c}>
+                                                                    <lightning-formatted-rich-text value={form_element.HTML_Snippet_Code__c}></lightning-formatted-rich-text>
                                                                 </template>
                                                                 
                                                                 <!--
-                                                                <template if:false={form_element.edf__Hidden__c}>
+                                                                <template if:false={form_element.Hidden__c}>
                                                                     <lightning-output-field  class="slds-form-element_readonly"
                                                                         onchange={handleInputFieldChange}
-                                                                        data-key={form_element.edf__Field_API_Lower_Case__c} 
-                                                                        field-name={form_element.edf__Field_API_Name__c}> 
+                                                                        data-key={form_element.Field_API_Lower_Case__c} 
+                                                                        field-name={form_element.Field_API_Name__c}> 
                                                                     </lightning-output-field>
                                                                 </template>
                                                                 -->
 
                                                                 <input 
-                                                                    data-searchkey={form_element.edf__Record_Gear_Key_Mapping__c}
-                                                                    data-recgearkeymapping={form_element.edf__Field_API_Lower_Case__c}
+                                                                    data-searchkey={form_element.Record_Gear_Key_Mapping__c}
+                                                                    data-recgearkeymapping={form_element.Field_API_Lower_Case__c}
                                                                     class="gearmapping" 
                                                                     type="hidden"
                                                                 />
 
-                                                                <template if:true={form_element.edf__Decision_Expression__c}>
+                                                                <template if:true={form_element.Decision_Expression__c}>
                                                                     <input 
-                                                                        data-gearid={form_element.edf__Form_Element_Key__c}
-                                                                        data-fieldapi={form_element.edf__Field_API_Name__c}
-                                                                        data-expression={form_element.edf__Decision_Expression__c}
+                                                                        data-gearid={form_element.Form_Element_Key__c}
+                                                                        data-fieldapi={form_element.Field_API_Name__c}
+                                                                        data-expression={form_element.Decision_Expression__c}
                                                                         class="decisiongear" 
                                                                         type="hidden"
                                                                     />
@@ -359,16 +359,16 @@
                                 
                                     </template> <!-- NOT A RELATED LIST CONDITION END-->
 
-                                    <template if:true={section.edf__Related_List_Container__c}> <!-- IS A RELATED LIST CONDITION START-->
+                                    <template if:true={section.Related_List_Container__c}> <!-- IS A RELATED LIST CONDITION START-->
                                         <!-- div class="slds-grid slds-wrap slds-gutters"> RL COLUMN WRAPPER HTML START -->
                                             <c-related-list 
-                                                sobject-api-name={section.edf__Object_API_Name__c}
-                                                related-field-api-name={section.edf__Related_Field_API_Name__c}
+                                                sobject-api-name={section.Object_API_Name__c}
+                                                related-field-api-name={section.Related_Field_API_Name__c}
                                                 sorted-by="Name"
                                                 fields={section.fields}
                                                 columns={section.columns}
                                                 invoked-from-experience={invokedfromexperience}
-                                                related-list-filter={section.edf__Filter_Condition__c}
+                                                related-list-filter={section.Filter_Condition__c}
                                                 record-id={recordId}
                                                 >
                                             </c-related-list>

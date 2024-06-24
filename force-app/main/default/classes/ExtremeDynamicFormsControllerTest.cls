@@ -6,7 +6,7 @@ private class ExtremeDynamicFormsControllerTest {
 
         Form_Definition__c fd = 
             new Form_Definition__c(
-                    Object_API_Name__c = 'edf__Form_Element__c',
+                    Object_API_Name__c = 'Form_Element__c',
                     Reference_Page_Layout__c = 'Form Element Layout'
                 );
         insert fd;
@@ -15,7 +15,7 @@ private class ExtremeDynamicFormsControllerTest {
             new Form_Definition_Version__c(
                     Form_Definition__c = fd.Id,
                     Active__c = true,
-                    Short_Description__c = 'Form Version for edf__Form_Element__c'
+                    Short_Description__c = 'Form Version for Form_Element__c'
                 );
         
         insert fdv;
@@ -53,7 +53,7 @@ private class ExtremeDynamicFormsControllerTest {
         try{
             ExtremeDynamicFormsController.getFormMetadata(fdv.Id, fdv.Name);
         }catch(Exception e){
-            System.assertEquals('Incompatible Form Version: '+fdv.Name+'. sObject on Form Defintion: edf__Form_Element__c is not same as record sObject: edf__Form_Definition_Version__c', e.getMessage());
+            System.assertEquals('Incompatible Form Version: '+fdv.Name+'. sObject on Form Defintion: Form_Element__c is not same as record sObject: Form_Definition_Version__c', e.getMessage());
         }
 
         Test.stopTest();

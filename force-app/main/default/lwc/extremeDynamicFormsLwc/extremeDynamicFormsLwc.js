@@ -1117,7 +1117,7 @@ export default class ExtremeDynamicFormsLwc extends LightningElement {
 
         this.mylog('Creating new form Definition:',data);
         data.forEach((obj)=>{
-            //this.mylog('Map check:',obj.edf__Form_Elements__r?.records);
+            //this.mylog('Map check:',obj.Form_Elements__r?.records);
             this.activeSections.push(obj.Name);
             obj.columns = [];
             if(this.invokedfromexperience){
@@ -1130,7 +1130,7 @@ export default class ExtremeDynamicFormsLwc extends LightningElement {
             }
 
             /* Related List [ */
-            if(obj.edf__Related_List_Container__c){
+            if(obj.Related_List_Container__c){
                 let fields = [];
                 obj.columns.push({
                     "label":"Name","fieldName":"LinkName", 
@@ -1140,24 +1140,24 @@ export default class ExtremeDynamicFormsLwc extends LightningElement {
 
                 fields.push('Name');
 
-                obj.edf__Form_Elements__r?.records.forEach(form_element=>{
+                obj.Form_Elements__r?.records.forEach(form_element=>{
 
-                    if(form_element.edf__Field_API_Name__c.toLowerCase()!='name'){
+                    if(form_element.Field_API_Name__c.toLowerCase()!='name'){
                         obj.columns.push({
-                            "label":form_element.edf__Custom_Label__c,
-                            "fieldName":form_element.edf__Field_API_Name__c, 
-                            "type":form_element.edf__Column_Type__c?.toLowerCase(),
+                            "label":form_element.Custom_Label__c,
+                            "fieldName":form_element.Field_API_Name__c, 
+                            "type":form_element.Column_Type__c?.toLowerCase(),
                             "sortable":true
                         });
-                        fields.push(form_element.edf__Field_API_Name__c);
+                        fields.push(form_element.Field_API_Name__c);
                     }
                 });
                 obj.fields = fields.join();
             }
             else{
-                obj.edf__Form_Elements__r?.records.forEach(form_element=>{
-                    //this.mylog('Form Element Column:',form_element?.edf__Column__c);
-                    form_element.edf__Record_Gear_Key_Mapping__c = form_element.edf__Record_Gear_Key_Mapping__c?.toLowerCase();
+                obj.Form_Elements__r?.records.forEach(form_element=>{
+                    //this.mylog('Form Element Column:',form_element?.Column__c);
+                    form_element.Record_Gear_Key_Mapping__c = form_element.Record_Gear_Key_Mapping__c?.toLowerCase();
     
                     // New template code [
     
@@ -1170,13 +1170,13 @@ export default class ExtremeDynamicFormsLwc extends LightningElement {
                         form_element.url='/'+form_element.Id;
                     }
     
-                    if(form_element.edf__Column__c !== undefined){
+                    if(form_element.Column__c !== undefined){
                         
-                        let colindex = form_element.edf__Column__c - 1;
+                        let colindex = form_element.Column__c - 1;
                         for(let k = obj.columns.length; k <= colindex; k++){
                             obj.columns[k] =
                             {
-                                columnkey: obj.Name+'-'+form_element.edf__Column__c,
+                                columnkey: obj.Name+'-'+form_element.Column__c,
                                 records:[]
                             };
                         }
@@ -1187,7 +1187,7 @@ export default class ExtremeDynamicFormsLwc extends LightningElement {
     
                     obj.colsclass = "slds-col slds-size_1-of-"+obj.columns.length;
     
-                    if(form_element?.edf__Custom_Label__c !== undefined){
+                    if(form_element?.Custom_Label__c !== undefined){
                         form_element.hascustomlabel = true;
                     }
                     else{
@@ -1296,13 +1296,13 @@ export default class ExtremeDynamicFormsLwc extends LightningElement {
                 
                 this.mylog("No Record Id passed OR record doesn't exist");
                 if(this.data.definition.length>0){
-                    this.currentRecordName = this.data.definition[0].edf__Form_Definition_Version__r.edf__Form_Definition__r.edf__Object_API_Name__c;
+                    this.currentRecordName = this.data.definition[0].Form_Definition_Version__r.Form_Definition__r.Object_API_Name__c;
                 }
                 this.mylog('currentRecordName from Form Definition:', this.currentRecordName);
             }
 
             if(this.data.definition.length>0){
-                this.readOnlyForm = this.data.definition[0].edf__Form_Definition_Version__r.edf__Read_Only_Form__c;
+                this.readOnlyForm = this.data.definition[0].Form_Definition_Version__r.Read_Only_Form__c;
                 this.mylog('readOnlyForm from Form Definition:', this.readOnlyForm);
             }
 

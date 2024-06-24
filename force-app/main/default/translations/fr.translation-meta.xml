@@ -5,15 +5,15 @@
         <name>Extreme_Dynamic_Forms</name>
     </customApplications>
     <customLabels>
-        <label>Annuler</label>
+        <label><!-- EDF Cancel Button Label --></label>
         <name>EDF_Cancel_Button_Label</name>
     </customLabels>
     <customLabels>
-        <label>Modifier</label>
+        <label><!-- EDF Edit Button Label --></label>
         <name>EDF_Edit_Button_Label</name>
     </customLabels>
     <customLabels>
-        <label>Sauvegarder</label>
+        <label><!-- EDF Save Button Label --></label>
         <name>EDF_Save_Button_Label</name>
     </customLabels>
     <flowDefinitions>

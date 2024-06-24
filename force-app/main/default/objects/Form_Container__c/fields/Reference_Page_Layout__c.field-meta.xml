@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Reference_Page_Layout__c</fullName>
-    <deprecated>false</deprecated>
     <externalId>false</externalId>
     <formula>Form_Definition_Version__r.Form_Definition__r.Object_API_Name__c  &amp; &quot; - &quot; &amp;  Form_Definition_Version__r.Form_Definition__r.Reference_Page_Layout__c</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>

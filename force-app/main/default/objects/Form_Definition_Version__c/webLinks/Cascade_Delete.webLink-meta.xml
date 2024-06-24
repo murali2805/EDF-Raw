@@ -10,5 +10,5 @@
     <openType>sidebar</openType>
     <protected>false</protected>
     <requireRowSelection>true</requireRowSelection>
-    <url>/flow/edf/Cascade_Delete_Form_Version?recordId={!Form_Definition_Version__c.Id}&amp;retURL={!Form_Definition__c.Id}</url>
+    <url>/flow/Cascade_Delete_Form_Version?recordId={!Form_Definition_Version__c.Id}&amp;retURL={!Form_Definition__c.Id}</url>
 </WebLink>
