@@ -25,6 +25,11 @@
                 <default>false</default>
                 <label>Phone</label>
             </value>
+            <value>
+                <fullName>Link</fullName>
+                <default>false</default>
+                <label>Link</label>
+            </value>
         </valueSetDefinition>
     </valueSet>
 </CustomField>

@@ -42,9 +42,11 @@ public with sharing class RelatedListController {
         try{
             Map<String, Object> root = (Map<String, Object>)JSON.deserializeUntyped(jsonData);  
             String fields = (String)root.get(FIELDS_PARAM);
+            /*
             if(!fields.toLowerCase().contains('name')){
                 fields = fields + ((fields!=null && fields!='')?',Name ':' Name ');
             }
+            */
             Integer numberOfRecords = (Integer)root.get(NUMBER_OF_RECORDS_PARAM);
             String recordId = (String)root.get(RECORD_ID_PARAM);
             String relatedFieldApiName = (String)root.get(RELATED_FIELD_API_NAME_PARAM);

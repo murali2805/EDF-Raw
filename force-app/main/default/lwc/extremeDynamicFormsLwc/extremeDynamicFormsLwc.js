@@ -1128,17 +1128,17 @@ export default class ExtremeDynamicFormsLwc extends LightningElement {
             /* Related List [ */
             if(obj.Related_List_Container__c){
                 let fields = [];
-                obj.columns.push({
-                    "label":"Name","fieldName":"LinkName", 
-                    "type":"url", 
-                    typeAttributes: { label: { fieldName: 'Name' }, target: '_top' }
-                });
-
-                fields.push('Name');
-
                 obj.Form_Elements__r?.records.forEach(form_element=>{
 
-                    if(form_element.Field_API_Name__c.toLowerCase()!='name'){
+                    if(form_element.Column_Type__c?.toLowerCase() == 'link'){
+                        obj.columns.push({
+                            "label":((form_element.Custom_Label__c!='' && form_element.Custom_Label__c!=null && form_element.Custom_Label__c!==undefined)?form_element.Custom_Label__c:"Name"),"fieldName":"LinkName", 
+                            "type":"url", 
+                            typeAttributes: { label: { fieldName: form_element.Field_API_Name__c }, target: '_top' }
+                        });
+                        obj.sortedby = form_element.Field_API_Name__c;
+                        fields.push(form_element.Field_API_Name__c);
+                    }else{
                         obj.columns.push({
                             "label":form_element.Custom_Label__c,
                             "fieldName":form_element.Field_API_Name__c, 
