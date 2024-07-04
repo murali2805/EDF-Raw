@@ -65,7 +65,7 @@
                     <!--======================================================  EDIT MODE ================================================================-->
 
                     <template if:true={editmode}>
-                        <lightning-record-edit-form object-api-name={currentRecordName} record-id={recordId} onerror={handleError} onsuccess={handleSuccess}>
+                        <lightning-record-edit-form record-type-id={recordTypeId} object-api-name={currentRecordName} record-id={recordId} onerror={handleError} onsuccess={handleSuccess}>
                             <template for:each={data.definition} for:item="section">
 
                                 <!-- +++++++++++++++++++++++++++++++++++++++++++++++ S E C T I O N     D I V    S T A R T +++++++++++++++++++++++++++++++++++++++++++++++ -->

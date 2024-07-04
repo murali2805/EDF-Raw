@@ -51,7 +51,7 @@
                     <!--=============================  EDIT MODE =============================-->
 
                     <template if:true={editmode}>
-                        <lightning-record-edit-form object-api-name={currentRecordName} record-id={recordId} onerror={handleError} onsuccess={handleSuccess}>
+                        <lightning-record-edit-form record-type-id={recordTypeId} object-api-name={currentRecordName} record-id={recordId} onerror={handleError} onsuccess={handleSuccess}>
                             <lightning-accordion allow-multiple-sections-open active-section-name={activeSections}>
                                 <template for:each={data.definition} for:item="section">
 
