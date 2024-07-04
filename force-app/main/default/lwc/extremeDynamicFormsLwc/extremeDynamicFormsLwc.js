@@ -28,7 +28,7 @@ import DEFAULT_TEMPLATE from './extremeDynamicFormsLwc.html';
 import DEBUG_MODE_TEMPLATE from './debugModeTemplate.html';
 import ACCORDIAN_TEMPLATE from './accordianTemplate.html';
 
-
+import { CurrentPageReference } from 'lightning/navigation';
 import IMAGES from "@salesforce/resourceUrl/ExtremeDynamicFormsStaticResource";
 
 import EditLabel from '@salesforce/label/c.EDF_Edit_Button_Label';
@@ -63,25 +63,12 @@ export default class ExtremeDynamicFormsLwc extends LightningElement {
     decisionenginefailed = false;
 
     edfboundary = '-edfboundary'+Math.random()+'-';
-
+    recordTypeId;
     /* Related List [ */
 
     //DEPRECATED [
     @api contactColumns = [];
     //DEPRECATED ]
-
-    rlcolumns = [
-        { label: 'Contact Name', fieldName: 'LinkName', type: 'url', typeAttributes: { label: { fieldName: 'Name' }, target: '_top' } },
-        { label: 'Title', fieldName: 'Title', type: 'text' },
-        { label: 'Email', fieldName: 'Email', type: 'email' },
-        { label: 'Phone', fieldName: 'Phone', type: "phone" }
-    ]
-
-    rlopptycolumns = [
-        { label: 'Opportunity Name', fieldName: 'LinkName', type: 'url', typeAttributes: { label: { fieldName: 'Name' }, target: '_top' } },
-        { label: 'StageName', fieldName: 'StageName', type: "text" }
-
-    ]
 
     /* Related List ] */
 
@@ -97,6 +84,13 @@ export default class ExtremeDynamicFormsLwc extends LightningElement {
 
     @wire(GetUserContextDecision,{userDecisionClass: '$usercontextclass',recordId:'$recordId'}) userContextDecision;
 
+    @wire(CurrentPageReference)
+    getStateParameters(currentPageReference) {
+       if (currentPageReference) {
+          this.recordTypeId = currentPageReference.state?.recordTypeId;
+       }
+       
+    }
     /*
     dynamicMethod = "methodName"
 
