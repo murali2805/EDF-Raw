@@ -63,7 +63,7 @@ export default class ExtremeDynamicFormsLwc extends LightningElement {
     decisionenginefailed = false;
 
     edfboundary = '-edfboundary'+Math.random()+'-';
-    recordTypeId;
+    
     /* Related List [ */
 
     //DEPRECATED [
@@ -79,6 +79,8 @@ export default class ExtremeDynamicFormsLwc extends LightningElement {
     @api debugmode=false;
     @api userContextExpressionClass; //NOT USED
     @api usercontextclass;
+    @api recordTypeId;
+
 
     @api invokedfromexperience=false;
 
@@ -86,7 +88,7 @@ export default class ExtremeDynamicFormsLwc extends LightningElement {
 
     @wire(CurrentPageReference)
     getStateParameters(currentPageReference) {
-       if (currentPageReference) {
+       if (currentPageReference && this.recordTypeId===undefined) {
           this.recordTypeId = currentPageReference.state?.recordTypeId;
        }
        
