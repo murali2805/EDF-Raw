@@ -123,18 +123,39 @@ export default class RelatedList extends NavigationMixin(LightningElement) {
     }
 
     handleCreateRecord() {
+        /*
+        const defaultValues = {
+            // Add your default field values here
+        };
+
+        this[NavigationMixin.Navigate]({
+            type: 'standard__objectPage',
+            attributes: {
+                objectApiName: this.sobjectApiName,
+                actionName: 'new'
+            },
+            state: {
+                defaultFieldValues: defaultValues,
+                recordTypeId: '012J3000000sc5ZIAQ'
+            }
+
+        });
+        */
+        
         const newEditPopup = this.template.querySelector("c-related-list-new-edit-popup");
         newEditPopup.recordId = null
         newEditPopup.recordName = null        
         newEditPopup.sobjectApiName = this.sobjectApiName;
         newEditPopup.sobjectLabel = this.state.sobjectLabel;
         newEditPopup.show();
+        
     }
 
     handleEditRecord(row) {
+
         const newEditPopup = this.template.querySelector("c-related-list-new-edit-popup");
         newEditPopup.recordId = row.Id;
-        newEditPopup.recordName = row.Name;
+        newEditPopup.recordName = row.Name?row.Name:this.state.sobjectLabel;
         newEditPopup.sobjectApiName = this.sobjectApiName;
         newEditPopup.sobjectLabel = this.state.sobjectLabel;
         newEditPopup.show();
